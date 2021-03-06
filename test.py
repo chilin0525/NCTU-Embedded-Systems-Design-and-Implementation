@@ -14,7 +14,7 @@ try:
         GPIO.output(LED_PIN, GPIO.LOW)
         time.sleep(1)
 except KeyboardInterrupt:
-    print "Exception: KeyboardInterrupt"
+    print("Exception: KeyboardInterrupt")
 finally:
     GPIO.output(LED_PIN, GPIO.LOW)
     GPIO.cleanup()
