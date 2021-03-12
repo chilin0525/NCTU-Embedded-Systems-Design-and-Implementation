@@ -47,11 +47,9 @@ def gpio_init():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
 
-
 def dht_init():
     instance = dht11.DHT11(pin=dataPin)
     return instance
-
 
 if __name__ == "__main__":
     try:
