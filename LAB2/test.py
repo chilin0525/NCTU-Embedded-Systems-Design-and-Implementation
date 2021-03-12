@@ -14,8 +14,16 @@ dhtDevice = adafruit_dht.DHT11(board.D18)
 # but it will not work in CircuitPython.
 # dhtDevice = adafruit_dht.DHT22(board.D18, use_pulseio=False)
 
+LED_PIN = 15
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.output(LED_PIN, GPIO.LOW)
+
 def turnon():
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.output(LED_PIN, GPIO.HIGH)
+
+def turnoff():
+    GPIO.output(LED_PIN, GPIO.LOW)
 
 while True:
     try:
