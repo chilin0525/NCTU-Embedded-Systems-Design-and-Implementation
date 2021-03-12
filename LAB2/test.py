@@ -4,7 +4,8 @@
 import time
 import board
 import adafruit_dht
- 
+import RPi.GPIO as GPIO
+
 # Initial the dht device, with data pin connected to:
 dhtDevice = adafruit_dht.DHT11(board.D18)
  
@@ -12,7 +13,10 @@ dhtDevice = adafruit_dht.DHT11(board.D18)
 # This may be necessary on a Linux single board computer like the Raspberry Pi,
 # but it will not work in CircuitPython.
 # dhtDevice = adafruit_dht.DHT22(board.D18, use_pulseio=False)
- 
+
+def turnon():
+    GPIO.setmode(GPIO.BOARD)
+
 while True:
     try:
         # Print the values to the serial port
