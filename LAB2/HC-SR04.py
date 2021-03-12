@@ -1,18 +1,18 @@
-import RPi.GPIO
+import RPi.GPIO as GPIO
 import time
 
-TRIGERping = 16
-ECHOping   = 18
+tripin   = 16
+echopin  = 18
 
 def gpio_setup():
-    RPi.GPIO.setmode(RPi.GPIO.BOARD)
-    RPi.GPIO.setup(TRIGERping, RPi.GPIO.OUT)
-    RPi.GPIO.setup(ECHOping, RPi.GPIO.IN)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(tripin, GPIO.OUT)
+    GPIO.setup(echopin, GPIO.IN)
 
 def hcsr04_setup():
-    RPi.GPIO.output(TRIGERping,RPi.GPIO.HIGH)
+    GPIO.output(tripin, GPIO.HIGH)
     time.sleep(0.00001)
-    RPi.GPIO.output(TRIGERping,RPi.GPIO.LOW)
+    GPIO.output(tripin, GPIO.LOW)
 
 def sol(start,end,speed):
     speed /= 2.0
@@ -20,7 +20,7 @@ def sol(start,end,speed):
     return speed*time*100.0
 
 def gpio_shutdown():
-    RPi.GPIO.cleanup()
+    GPIO.cleanup()
 
 if __name__=="__main__":
     print("go")
@@ -28,11 +28,11 @@ if __name__=="__main__":
         gpio_setup()
         hcsr04_setup()
         print("gogo")
-        while(RPi.GPIO.input(ECHOping) == RPi.GPIO.LOW):
+        while(GPIO.input(echopin) == GPIO.LOW):
             print("bug")
             start = time.time()
         print("start")
-        while(RPi.GPIO.input(ECHOping) == RPi.GPIO.HIGH):
+        while(GPIO.input(echopin) == GPIO.HIGH):
             end  = time.time()
         print("distance is %.2f", sol(start,end,340.0))
     except:
