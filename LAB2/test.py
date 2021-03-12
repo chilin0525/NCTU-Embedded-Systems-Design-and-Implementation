@@ -27,7 +27,6 @@ def turnoff():
 
 while True:
     try:
-        # Print the values to the serial port
         temperature_c = dhtDevice.temperature
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
@@ -36,6 +35,10 @@ while True:
                 temperature_f, temperature_c, humidity
             )
         )
+        if(temperature_c>=26):
+            turnon()
+        else:
+            turnoff()
  
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
