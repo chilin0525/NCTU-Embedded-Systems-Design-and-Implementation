@@ -27,13 +27,13 @@ def sol(start, end, speed):
 
 def slow():
     GPIO.output(led, GPIO.HIGH)
-    time.sleep(0.5)
+    time.sleep(0.001)
     GPIO.output(led, GPIO.LOW)
 
 
-def fast():
+def slow():
     GPIO.output(led, GPIO.HIGH)
-    time.sleep(0.1)
+    time.sleep(0.00001)
     GPIO.output(led, GPIO.LOW)
 
 
@@ -53,10 +53,6 @@ if __name__ == "__main__":
             distance = sol(start, end, 340.0)
             print("distance is " + str(distance))
             time.sleep(0.5)
-            if(distance<30):
-                fast()
-            elif(distance>30 and distance<100):
-                slow()
         finally:
             gpio_shutdown()
 
