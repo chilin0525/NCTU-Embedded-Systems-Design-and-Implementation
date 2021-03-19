@@ -1,6 +1,7 @@
 import smbus
 import time
 from math import *
+from gy import *
 
 bus = smbus.SMBus(1)            # 0 for R-Pi Rev. 1, 1 for Rev. 2
 
@@ -140,10 +141,18 @@ class ADXL345(IMU):
 
 
 if __name__=="__main__":
+    pitch = []
+    roll = []
+    pitch.append(0)
+    pitch.append(0)
+    roll.append(0)
+    roll.append(0)
     while(1):
         try:
             sensors = gy801()
             adxl345 = sensors.accel
+            sensor2 = gy801_2()
+            gyro = sensors2.gyro
 
             adxl345.getX()
             adxl345.getY()
@@ -162,6 +171,17 @@ if __name__=="__main__":
             # print("z = %.3f" % (adxl345.Zraw))
             print("pitch = %.3f" % ( adxl345.getPitch() ))
             print("roll = %.3f" % ( adxl345.getRoll() ))
+            
+            tmpPitch = (pitch[0]+gyro.getXangle())*0.98+adxl345.getPitch()*0.02gyro
+            tmpRoll = (roll[0]+gyro.getYangle())*0.98+adxl345.getRoll()*0.02gyro
+            pitch[0] = pitch[1]
+            pitch[1] = tmpPitch
+            roll[0] = roll[1]
+            roll[1] = tmpRoll
+
+            print("Pitch[T] is : %.3f" % (pitch[1]))
+            print("Roll[T] is : %.3f" % (roll[1]))
+
             print("")
 
         except KeyboardInterrupt:

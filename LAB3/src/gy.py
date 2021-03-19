@@ -42,7 +42,7 @@ class IMU(object):
             return val
 
 
-class gy801(object):
+class gy801_2(object):
     def __init__(self):
         self.gyro = L3G4200D()
 
@@ -137,7 +137,7 @@ if __name__ == "__main__":
         # if run directly we'll just create an instance of the class and output
         # the current readings
 
-        sensors = gy801()
+        sensors = gy801_2()
 
         gyro = sensors.gyro
 
