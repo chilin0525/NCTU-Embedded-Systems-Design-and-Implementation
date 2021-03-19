@@ -172,8 +172,8 @@ if __name__=="__main__":
             print("pitch = %.3f" % ( adxl345.getPitch() ))
             print("roll = %.3f" % ( adxl345.getRoll() ))
             
-            tmpPitch = (pitch[0]+gyro.getXangle())*0.98+adxl345.getPitch()*0.02gyro
-            tmpRoll = (roll[0]+gyro.getYangle())*0.98+adxl345.getRoll()*0.02gyro
+            tmpPitch = (pitch[0]+gyro.getXangle())*0.98+adxl345.getPitch()*0.02
+            tmpRoll = (roll[0]+gyro.getYangle())*0.98+adxl345.getRoll()*0.02
             pitch[0] = pitch[1]
             pitch[1] = tmpPitch
             roll[0] = roll[1]
