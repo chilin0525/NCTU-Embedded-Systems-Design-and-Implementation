@@ -152,7 +152,7 @@ if __name__=="__main__":
             sensors = gy801()
             adxl345 = sensors.accel
             sensor2 = gy801_2()
-            gyro = sensors2.gyro
+            gyro = sensor2.gyro
 
             adxl345.getX()
             adxl345.getY()
