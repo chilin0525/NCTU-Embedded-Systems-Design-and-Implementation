@@ -140,28 +140,29 @@ class ADXL345(IMU):
 
 
 if __name__=="__main__":
-    try:
-        sensors = gy801()
-        adxl345 = sensors.accel
+    while(1):
+        try:
+            sensors = gy801()
+            adxl345 = sensors.accel
 
-        adxl345.getX()
-        adxl345.getY()
-        adxl345.getZ()
+            adxl345.getX()
+            adxl345.getY()
+            adxl345.getZ()
 
-        print("ACC: ")
-        print("x = %.3f m/s2 %.3fG" % (adxl345.X, adxl345.Xg))
-        print("y = %.3f m/s2 %.3fG" % (adxl345.Y, adxl345.Yg))
-        print("z = %.3f m/s2 %.3fG" % (adxl345.Z, adxl345.Zg))
-        print("norm acc:", sqrt(adxl345.X*adxl345.X + adxl345.Y*adxl345.Y + adxl345.Z*adxl345.Z))
-        # print("x = %.3fG" % ( adxl345.Xg ))
-        # print("y = %.3fG" % ( adxl345.Yg ))
-        # print("z = %.3fG" % ( adxl345.Zg ))
-        # print("x = %.3f" % (adxl345.Xraw))
-        # print("y = %.3f" % (adxl345.Yraw))
-        # print("z = %.3f" % (adxl345.Zraw))
-        print("pitch = %.3f" % ( adxl345.getPitch() ))
-        print("roll = %.3f" % ( adxl345.getRoll() ))
-        print("")
+            print("ACC: ")
+            print("x = %.3f m/s2 %.3fG" % (adxl345.X, adxl345.Xg))
+            print("y = %.3f m/s2 %.3fG" % (adxl345.Y, adxl345.Yg))
+            print("z = %.3f m/s2 %.3fG" % (adxl345.Z, adxl345.Zg))
+            print("norm acc:", sqrt(adxl345.X*adxl345.X + adxl345.Y*adxl345.Y + adxl345.Z*adxl345.Z))
+            # print("x = %.3fG" % ( adxl345.Xg ))
+            # print("y = %.3fG" % ( adxl345.Yg ))
+            # print("z = %.3fG" % ( adxl345.Zg ))
+            # print("x = %.3f" % (adxl345.Xraw))
+            # print("y = %.3f" % (adxl345.Yraw))
+            # print("z = %.3f" % (adxl345.Zraw))
+            print("pitch = %.3f" % ( adxl345.getPitch() ))
+            print("roll = %.3f" % ( adxl345.getRoll() ))
+            print("")
 
-    except KeyboardInterrupt:
-        print("Cleanup")
+        except KeyboardInterrupt:
+            print("Cleanup")
