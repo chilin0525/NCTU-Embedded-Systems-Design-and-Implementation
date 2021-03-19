@@ -128,14 +128,14 @@ class ADXL345(IMU):
         aX = self.getXg()
         aY = self.getYg()
         aZ = self.getZg()
-        self.pitch = atan(-aX/sqrt(aY*aY+aZ*aZ))
+        self.pitch = atan2(-aX,sqrt(aY*aY+aZ*aZ))
         return self.pitch
 
     def getRoll(self):
         aX = self.getXg()
         aY = self.getYg()
         aZ = self.getZg()
-        self.roll = atan(aY/aZ)
+        self.roll = atan2(aY,aZ)
         return self.roll
 
 
