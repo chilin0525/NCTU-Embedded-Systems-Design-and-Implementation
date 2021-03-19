@@ -14,9 +14,9 @@ ADXL345_DATA_FORMAT = 0x31
 ADXL345_DATAX0 = 0x32
 ADXL345_DATAY0 = 0x34
 ADXL345_DATAZ0 = 0x36
-ADXL345_SCALE_MULTIPLIER = ???    # G/LSP
-ADXL345_BW_RATE_100HZ = 0x??
-ADXL345_MEASURE = 0x??
+# ADXL345_SCALE_MULTIPLIER = ???    # G/LSP
+# ADXL345_BW_RATE_100HZ = 0x??
+# ADXL345_MEASURE = 0x??
 
 
 class IMU(object):
@@ -128,14 +128,14 @@ class ADXL345(IMU):
         aX = self.getXg()
         aY = self.getYg()
         aZ = self.getZg()
-        self.pitch = ??????
+        self.pitch = atan(-aX/sqrt(aY*aY+aZ*aZ))
         return self.pitch
 
     def getRoll(self):
         aX = self.getXg()
         aY = self.getYg()
         aZ = self.getZg()
-        self.roll = ??????
+        self.roll = atan(aY/aZ)
         return self.roll
 
 
@@ -149,18 +149,19 @@ if __name__=="__main__":
         adxl345.getZ()
 
         print("ACC: ")
-        print("x = %.3f m/s2" % (adxl345.X))
-        print("y = %.3f m/s2" % (adxl345.Y))
-        print("z = %.3f m/s2" % (adxl345.Z))
-    #    print ("x = %.3fG" % ( adxl345.Xg ))
-    #    print ("y = %.3fG" % ( adxl345.Yg ))
-    #    print ("z = %.3fG" % ( adxl345.Zg ))
-        print("x = %.3f" % (adxl345.Xraw))
-        print("y = %.3f" % (adxl345.Yraw))
-        print("z = %.3f" % (adxl345.Zraw))
-    #    print ("pitch = %.3f" % ( adxl345.getPitch() ))
-    #    print ("roll = %.3f" % ( adxl345.getRoll() ))
-
+        print("x = %.3f m/s2 %.3fG" % (adxl345.X, adxl345.Xg))
+        print("y = %.3f m/s2 %.3fG" % (adxl345.Y, adxl345.Yg))
+        print("z = %.3f m/s2 %.3fG" % (adxl345.Z, adxl345.Zg))
+        print("norm acc:", sqrt(adxl345.X*adxl345.X + adxl345.Y*adxl345.Y + adxl345.Z*adxl345.Z))
+        # print("x = %.3fG" % ( adxl345.Xg ))
+        # print("y = %.3fG" % ( adxl345.Yg ))
+        # print("z = %.3fG" % ( adxl345.Zg ))
+        # print("x = %.3f" % (adxl345.Xraw))
+        # print("y = %.3f" % (adxl345.Yraw))
+        # print("z = %.3f" % (adxl345.Zraw))
+        print("pitch = %.3f" % ( adxl345.getPitch() ))
+        print("roll = %.3f" % ( adxl345.getRoll() ))
+        print("")
 
     except KeyboardInterrupt:
         print("Cleanup")
