@@ -141,12 +141,8 @@ class ADXL345(IMU):
 
 
 if __name__ == "__main__":
-    pitch = []
-    roll = []
-    pitch.append(0)
-    pitch.append(0)
-    roll.append(0)
-    roll.append(0)
+    v0 = 0.0
+    vt = 0.0
     while(1):
         try:
             sensors = gy801()
@@ -159,8 +155,11 @@ if __name__ == "__main__":
             adxl345.getZ()
 
             normacc = sqrt(adxl345.X*adxl345.X + adxl345.Y*adxl345.Y + adxl345.Z*adxl345.Z)
+            print("distance is :", (normacc*2*v0+normacc*normacc)/(2*normacc))
 
-            print("distance is :", normacc/2)
+            vt = v0 + normacc
+            v0 = vt
+
 
         except KeyboardInterrupt:
             print("Cleanup")
