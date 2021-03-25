@@ -158,7 +158,7 @@ if __name__ == "__main__":
             adxl345.getY()
             adxl345.getZ()
 
-            float normacc = sqrt(adxl345.X*adxl345.X + adxl345.Y*adxl345.Y + adxl345.Z*adxl345.Z)
+            normacc = sqrt(adxl345.X*adxl345.X + adxl345.Y*adxl345.Y + adxl345.Z*adxl345.Z)
 
             print("distance is :", normacc/2)
 
