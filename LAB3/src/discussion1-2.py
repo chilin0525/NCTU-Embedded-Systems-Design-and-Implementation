@@ -60,7 +60,7 @@ class ADXL345(IMU):
         #Class Properties
         self.Xoffset = 0.039
         self.Yoffset = -0.004
-        self.Zoffset = -1.035
+        self.Zoffset = 1.035
         self.Xraw = 0.0
         self.Yraw = 0.0
         self.Zraw = 0.0
