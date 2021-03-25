@@ -155,7 +155,8 @@ if __name__ == "__main__":
             adxl345.getZ()
 
             normacc = sqrt(adxl345.X*adxl345.X + adxl345.Y*adxl345.Y + adxl345.Z*adxl345.Z)
-            print("distance is :", (normacc*2*v0+normacc*normacc)/(2*normacc))
+            
+            print("distance is :", (normacc*2*v0+normacc*normacc)/(2*normacc), " norm: ",normacc)
 
             vt = v0 + normacc
             v0 = vt
