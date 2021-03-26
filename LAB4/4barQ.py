@@ -161,7 +161,7 @@ try:
     
     sensors3 = gy801_3()
 
-    barometer = sensors.baro
+    barometer = sensors3.baro
     
     tempC = barometer.getTempC()
     tempF = barometer.getTempF()
