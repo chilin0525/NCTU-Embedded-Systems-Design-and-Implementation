@@ -88,9 +88,9 @@ class ADXL345(IMU):
 
     def __init__(self) :
         #Class Properties
-        self.Xoffset = -188.5  # unit: G, modify by yourself
-        self.Yoffset = -13.5  # unit: G, modify by yourself
-        self.Zoffset = 95.5  # unit: G, modify by yourself
+        self.Xoffset = 0  # unit: G, modify by yourself
+        self.Yoffset = 0  # unit: G, modify by yourself
+        self.Zoffset = 0  # unit: G, modify by yourself
         self.Xraw = 0.0
         self.Yraw = 0.0
         self.Zraw = 0.0
@@ -188,9 +188,9 @@ class HMC5883L(IMU):
         self.Y = None
         self.Z = None
         self.angle = None
-        self.Xoffset = 0
-        self.Yoffset = 0
-        self.Zoffset = 0
+        self.Xoffset = -188.5
+        self.Yoffset = -13.5
+        self.Zoffset = 95.5
         
         # Declination Angle
         self.angle_offset = ( -1 * (4 + (32/60))) / (180 / pi)
@@ -306,7 +306,12 @@ try:
 #        print ("Z = %d (gauss)" % ( magz ))
 #        print ("tiltX = %.3f ," % ( compx )),
 #        print ("tiltY = %.3f ," % ( compy )),
+
+        xh = magx*cos(pitcharr[1])+magz*sin(pitcharr[1])
+        yh = magx*sin(rollarr[1])*sin(pitcharr[1])+magy*cos(rollarr[1])-magz*sin(rollarr[1])*cos(pitch[1])
        
+        print(xh," ",yh)
+
 #        print ("Angle offset = %.3f deg" % ( compass.angle_offset ))
         print ("Original Heading = %.3f deg, " % ( bearing1 )), 
         print ("Tilt Heading = %.3f deg, " % ( bearing2 ))
