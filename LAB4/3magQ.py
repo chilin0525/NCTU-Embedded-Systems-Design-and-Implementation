@@ -330,10 +330,11 @@ try:
         press = barometer.getPress()
         altitude = barometer.getAltitude()
 
-        print("Barometer:")
-        print("   Temp: %f C (%f F)" % (tempC, tempF))
-        print("   Press: %f (hPa)" % (press))
+        # print("Barometer:")
+        # print("   Temp: %f C (%f F)" % (tempC, tempF))
+        # print("   Press: %f (hPa)" % (press))
         print("   Altitude: %f m s.l.m" % (altitude))
-        
+        print("")
+
 except KeyboardInterrupt:
     print("Cleanup")
