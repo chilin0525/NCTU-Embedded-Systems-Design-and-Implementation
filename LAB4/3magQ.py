@@ -307,10 +307,10 @@ try:
 #        print ("tiltX = %.3f ," % ( compx )),
 #        print ("tiltY = %.3f ," % ( compy )),
 
-        # xh = magx*cos(pitcharr[1])+magz*sin(pitcharr[1])
-        # yh = magx*sin(rollarr[1])*sin(pitcharr[1])+magy*cos(rollarr[1])-magz*sin(rollarr[1])*cos(pitch[1])
+        xh = magx*cos(pitcharr[1])+magz*sin(pitcharr[1])
+        yh = magx*sin(rollarr[1])*sin(pitcharr[1])+magy*cos(rollarr[1])-magz*sin(rollarr[1])*cos(pitcharr[1])
        
-        # print(xh," ",yh)
+        print(xh," ",yh)
 
 #        print ("Angle offset = %.3f deg" % ( compass.angle_offset ))
         print ("Original Heading = %.3f deg, " % ( bearing1 )), 
