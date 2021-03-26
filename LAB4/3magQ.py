@@ -3,7 +3,7 @@
 import smbus
 import time
 from math import *
-from util import *
+from gy import *
 
 bus = smbus.SMBus(1);            # 0 for R-Pi Rev. 1, 1 for Rev. 2
 
@@ -88,9 +88,9 @@ class ADXL345(IMU):
 
     def __init__(self) :
         #Class Properties
-        self.Xoffset = 0.0  # unit: G, modify by yourself
-        self.Yoffset = 0.0  # unit: G, modify by yourself
-        self.Zoffset = 0.0  # unit: G, modify by yourself
+        self.Xoffset = -188.5  # unit: G, modify by yourself
+        self.Yoffset = -13.5  # unit: G, modify by yourself
+        self.Zoffset = 95.5  # unit: G, modify by yourself
         self.Xraw = 0.0
         self.Yraw = 0.0
         self.Zraw = 0.0
@@ -233,24 +233,22 @@ class HMC5883L(IMU):
         return self.angle
 
 
-# pitch = []
-# roll = []
-# pitch.append(0)
-# pitch.append(0)
-# roll.append(0)
-# roll.append(0)
+pitch = []
+roll = []
+pitch.append(0)
+pitch.append(0)
+roll.append(0)
+roll.append(0)
 
 try:
     sensors = gy801()
     compass = sensors.compass
     adxl345 = sensors.accel
 
-    # # ################ LAB3 #####################
-    # sensors3 = gy801_3()
-    # adxl345 = sensors3.accel
-    # sensor2 = gy801_2()
-    # gyro = sensor2.gyro
-    # # ################ LAB3 #####################
+    # ################ LAB3 #####################
+    sensor2 = gy801_2()
+    gyro = sensor2.gyro
+    # ################ LAB3 #####################
 
     while True:
         magx = compass.getX()
@@ -292,15 +290,15 @@ try:
         bearing2 = bearing2 + compass.angle_offset
         # --------------------------------------------------
 
-        # # ################ LAB3 #####################
-        # tmpPitch = (pitch[0]+gyro.getXangle())*0.98+adxl345.getPitch()*0.02
-        # tmpRoll = (roll[0]+gyro.getYangle())*0.98+adxl345.getRoll()*0.02
-        # pitch[0] = pitch[1]
-        # pitch[1] = tmpPitch
-        # roll[0] = roll[1]
-        # roll[1] = tmpRoll
-        # print("pitch:", pitch[1], "roll:", roll[1])
-        # # ################ LAB3 #####################
+        # ################ LAB3 #####################
+        tmpPitch = (pitch[0]+gyro.getXangle())*0.98+pitch*0.02
+        tmpRoll = (roll[0]+gyro.getYangle())*0.98+roll*0.02
+        pitch[0] = pitch[1]
+        pitch[1] = tmpPitch
+        roll[0] = roll[1]
+        roll[1] = tmpRoll
+        print("pitch:", pitch[1], "roll:", roll[1])
+        # ################ LAB3 #####################
         
 #        print ("Compass: " )
 #        print ("X = %d ," % ( magx )),
