@@ -4,7 +4,7 @@ import smbus
 import time
 from math import *
 from gy import *
-from 4barQ import *
+from barQ import *
 
 bus = smbus.SMBus(1);            # 0 for R-Pi Rev. 1, 1 for Rev. 2
 
