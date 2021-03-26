@@ -48,7 +48,7 @@ class IMU(object):
         else:
             return val
 
-class gy801(object):
+class gy801_3(object):
     def __init__(self) :
         self.baro = BMP180()
 
@@ -159,7 +159,7 @@ try:
     # if run directly we'll just create an instance of the class and output 
     # the current readings
     
-    sensors = gy801()
+    sensors3 = gy801_3()
 
     barometer = sensors.baro
     
