@@ -155,24 +155,24 @@ class BMP180(IMU):
         self.altitude = 44330 * (1 - ((self.getPress() / STANDARD_PRESSURE) ** 0.1903))
         return self.altitude
 
-try:
-    # if run directly we'll just create an instance of the class and output 
-    # the current readings
+# try:
+#     # if run directly we'll just create an instance of the class and output 
+#     # the current readings
     
-    sensors3 = gy801_3()
+#     sensors3 = gy801_3()
 
-    barometer = sensors3.baro
+#     barometer = sensors3.baro
     
-    tempC = barometer.getTempC()
-    tempF = barometer.getTempF()
-    press = barometer.getPress()
-    altitude = barometer.getAltitude()
+#     tempC = barometer.getTempC()
+#     tempF = barometer.getTempF()
+#     press = barometer.getPress()
+#     altitude = barometer.getAltitude()
    
-    print ("Barometer:" )
-    print ("   Temp: %f C (%f F)" %(tempC,tempF))
-    print ("   Press: %f (hPa)" %(press))
-    print ("   Altitude: %f m s.l.m" %(altitude))
+#     print ("Barometer:" )
+#     print ("   Temp: %f C (%f F)" %(tempC,tempF))
+#     print ("   Press: %f (hPa)" %(press))
+#     print ("   Altitude: %f m s.l.m" %(altitude))
 
         
-except KeyboardInterrupt:
-    print("Cleanup")
+# except KeyboardInterrupt:
+#     print("Cleanup")

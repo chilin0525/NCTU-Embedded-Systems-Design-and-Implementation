@@ -251,6 +251,9 @@ try:
     gyro = sensor2.gyro
     # ################ LAB3 #####################
 
+    sensors3 = gy801_3()
+    barometer = sensors3.baro
+
     while True:
         magx = compass.getX()
         magy = compass.getY()
@@ -312,13 +315,25 @@ try:
         yh = magx*sin(rollarr[1])*sin(pitcharr[1])+magy*cos(rollarr[1])-magz*sin(rollarr[1])*cos(pitcharr[1])
        
         # print(xh," ",yh)
-        print(atan2(yh,xh)*180/pi)
+        print("Pitch: ",pitcharr[1], " Roll: ", rollarr[1])
+        print("Heading", atan2(yh,xh)*180/pi)
 
 #        print ("Angle offset = %.3f deg" % ( compass.angle_offset ))
         print ("Original Heading = %.3f deg, " % ( bearing1 )), 
         print ("Tilt Heading = %.3f deg, " % ( bearing2 ))
         time.sleep(1)
 
+        print("")        
+
+        tempC = barometer.getTempC()
+        tempF = barometer.getTempF()
+        press = barometer.getPress()
+        altitude = barometer.getAltitude()
+
+        print("Barometer:")
+        print("   Temp: %f C (%f F)" % (tempC, tempF))
+        print("   Press: %f (hPa)" % (press))
+        print("   Altitude: %f m s.l.m" % (altitude))
         
 except KeyboardInterrupt:
     print("Cleanup")
