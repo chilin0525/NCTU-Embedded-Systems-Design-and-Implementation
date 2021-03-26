@@ -39,7 +39,7 @@ maxy = 0
 minz = 0
 maxz = 0
 
-print "Now repeatedly rotate the hmc5883l around all three axes"
+print("Now repeatedly rotate the hmc5883l around all three axes")
 
 for i in range(0,100):
     x_out = read_word_2c(3)
@@ -65,7 +65,7 @@ for i in range(0,100):
     if z_out > maxz:
         maxz=z_out
    
-    print ("x: %.0f - %.0f, y: %.0f - %.0f, z: %.0f - %.0f" % (minx, maxx, miny, maxy, minz, maxz) )
+    print("x: %.0f - %.0f, y: %.0f - %.0f, z: %.0f - %.0f" % (minx, maxx, miny, maxy, minz, maxz) )
     
     time.sleep(0.1)
 
@@ -74,6 +74,6 @@ print ( "x: min, max = %.0f, %.0f" % (minx, maxx) )
 print ( "y: min, max = %.0f, %.0f" % (miny, maxy) )
 print ( "z: min, max = %.0f, %.0f" % (minz, maxz) )
 
-print "x offset: ", (maxx + minx) / 2
-print "y offset: ", (maxy + miny) / 2
-print "z offset: ", (maxz + minz) / 2
+print ("x offset: ", (maxx + minx) / 2)
+print ("y offset: ", (maxy + miny) / 2)
+print ("z offset: ", (maxz + minz) / 2)
