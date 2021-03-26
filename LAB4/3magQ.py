@@ -12,7 +12,7 @@ EARTH_GRAVITY_MS2    = 9.80665 # m/s2
 
 # the following address is defined by datasheet
 #HMC5883L (Magnetometer) constants
-HMC5883L_ADDRESS        =    0x1E  # I2C address
+HMC5883L_ADDRESS        =    0x30  # I2C address fuck
     
 HMC5883L_CRA            =    0x00  # write CRA(00), Configuration Register A
 HMC5883L_CRB            =    0x01  # write CRB(01), Configuration Register B
