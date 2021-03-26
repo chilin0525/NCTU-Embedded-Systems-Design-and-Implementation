@@ -291,8 +291,8 @@ try:
         # --------------------------------------------------
 
         # ################ LAB3 #####################
-        tmpPitch = (pitch[0]+gyro.getXangle())*0.98+pitch*0.02
-        tmpRoll = (roll[0]+gyro.getYangle())*0.98+roll*0.02
+        tmpPitch = (pitcharr[0]+gyro.getXangle())*0.98+pitch*0.02
+        tmpRoll = (rollarr[0]+gyro.getYangle())*0.98+roll*0.02
         pitcharr[0] = pitcharr[1]
         pitcharr[1] = tmpPitch
         rollarr[0] = rollarr[1]
