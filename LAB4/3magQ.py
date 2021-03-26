@@ -233,12 +233,12 @@ class HMC5883L(IMU):
         return self.angle
 
 
-pitch = []
-roll = []
-pitch.append(0)
-pitch.append(0)
-roll.append(0)
-roll.append(0)
+pitcharr = []
+rollarr = []
+pitcharr.append(0)
+pitcharr.append(0)
+rollarr.append(0)
+rollarr.append(0)
 
 try:
     sensors = gy801()
@@ -293,11 +293,11 @@ try:
         # ################ LAB3 #####################
         tmpPitch = (pitch[0]+gyro.getXangle())*0.98+pitch*0.02
         tmpRoll = (roll[0]+gyro.getYangle())*0.98+roll*0.02
-        pitch[0] = pitch[1]
-        pitch[1] = tmpPitch
-        roll[0] = roll[1]
-        roll[1] = tmpRoll
-        print("pitch:", pitch[1], "roll:", roll[1])
+        pitcharr[0] = pitcharr[1]
+        pitcharr[1] = tmpPitch
+        rollarr[0] = rollarr[1]
+        rollarr[1] = tmpRoll
+        print("pitch:", pitcharr[1], "roll:", rollarr[1])
         # ################ LAB3 #####################
         
 #        print ("Compass: " )
