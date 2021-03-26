@@ -320,10 +320,7 @@ try:
 
 #        print ("Angle offset = %.3f deg" % ( compass.angle_offset ))
         print ("Original Heading = %.3f deg, " % ( bearing1 )), 
-        print ("Tilt Heading = %.3f deg, " % ( bearing2 ))
-        time.sleep(1)
-
-        print("")        
+        print ("Tilt Heading = %.3f deg, " % ( bearing2 ))  
 
         tempC = barometer.getTempC()
         tempF = barometer.getTempF()
@@ -335,6 +332,7 @@ try:
         # print("   Press: %f (hPa)" % (press))
         print("   Altitude: %f m s.l.m" % (altitude))
         print("")
+        time.sleep(1)
 
 except KeyboardInterrupt:
     print("Cleanup")
