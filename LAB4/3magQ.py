@@ -297,7 +297,7 @@ try:
         pitcharr[1] = tmpPitch
         rollarr[0] = rollarr[1]
         rollarr[1] = tmpRoll
-        print("pitch:", pitcharr[1], "roll:", rollarr[1])
+        # print("pitch:", pitcharr[1], "roll:", rollarr[1])
         # ################ LAB3 #####################
         
 #        print ("Compass: " )
@@ -310,7 +310,8 @@ try:
         xh = magx*cos(pitcharr[1])+magz*sin(pitcharr[1])
         yh = magx*sin(rollarr[1])*sin(pitcharr[1])+magy*cos(rollarr[1])-magz*sin(rollarr[1])*cos(pitcharr[1])
        
-        print(xh," ",yh)
+        # print(xh," ",yh)
+        print(atan2(yh,xh))
 
 #        print ("Angle offset = %.3f deg" % ( compass.angle_offset ))
         print ("Original Heading = %.3f deg, " % ( bearing1 )), 
