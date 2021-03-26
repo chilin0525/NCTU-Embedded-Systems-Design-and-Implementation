@@ -69,7 +69,7 @@ for i in range(0,100):
     
     time.sleep(0.1)
 
-print "results:"
+print ("results:")
 print ( "x: min, max = %.0f, %.0f" % (minx, maxx) )
 print ( "y: min, max = %.0f, %.0f" % (miny, maxy) )
 print ( "z: min, max = %.0f, %.0f" % (minz, maxz) )
