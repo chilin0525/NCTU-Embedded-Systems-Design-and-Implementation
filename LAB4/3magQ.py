@@ -12,7 +12,7 @@ EARTH_GRAVITY_MS2    = 9.80665 # m/s2
 
 # the following address is defined by datasheet
 #HMC5883L (Magnetometer) constants
-HMC5883L_ADDRESS        =    0x30  # I2C address fuck
+HMC5883L_ADDRESS        =    0x30  # I2C address
     
 HMC5883L_CRA            =    0x00  # write CRA(00), Configuration Register A
 HMC5883L_CRB            =    0x01  # write CRB(01), Configuration Register B
@@ -311,7 +311,7 @@ try:
         yh = magx*sin(rollarr[1])*sin(pitcharr[1])+magy*cos(rollarr[1])-magz*sin(rollarr[1])*cos(pitcharr[1])
        
         # print(xh," ",yh)
-        print(atan2(yh,xh))
+        print(atan2(yh,xh)*180/pi)
 
 #        print ("Angle offset = %.3f deg" % ( compass.angle_offset ))
         print ("Original Heading = %.3f deg, " % ( bearing1 )), 
