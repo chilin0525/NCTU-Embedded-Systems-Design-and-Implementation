@@ -10,7 +10,7 @@ def job():
             for i, filename in enumerate(camera.capture_continuous('{counter:03d}.jpg')):
                 print(filename)
                 time.sleep(1)
-                if i == 59:
+                if i == 10:
                     break
         finally:
             camera.stop_preview()
