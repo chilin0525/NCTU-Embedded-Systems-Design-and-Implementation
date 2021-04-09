@@ -1,6 +1,6 @@
 import time
 import picamera
-from schedule 
+import schedule 
 from datetime import date
 
 def job():
@@ -16,7 +16,7 @@ def job():
             camera.stop_preview()
 
 
-schedule.every().day.at('13:39').do(job)
+schedule.every().day.at('13:40').do(job)
 
 while True:
     schedule.run_pending()
