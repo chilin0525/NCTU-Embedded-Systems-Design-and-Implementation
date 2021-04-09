@@ -12,7 +12,7 @@
 # Origin : http://blog.miguelgrinberg.com/post/video-streaming-with-flask
 
 import cv2
-
+from imutils.video.pivideostream import PiVideoStream
 class Camera(object):
     def __init__(self):
         if cv2.__version__.startswith('2'):
@@ -22,7 +22,8 @@ class Camera(object):
             PROP_FRAME_WIDTH = cv2.CAP_PROP_FRAME_WIDTH
             PROP_FRAME_HEIGHT = cv2.CAP_PROP_FRAME_HEIGHT
 
-        self.video = cv2.VideoCapture(0)
+        # self.video = cv2.VideoCapture(0)
+        self.video = PiVideoStream().start()
         #self.video = cv2.VideoCapture(1)
         #self.video.set(PROP_FRAME_WIDTH, 640)
         #self.video.set(PROP_FRAME_HEIGHT, 480)
