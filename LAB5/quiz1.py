@@ -16,5 +16,5 @@ def job():
             camera.stop_preview()
 
 
-print(datetime.datetime.now().date, datetime.datetime.now().month,
+print(datetime.datetime.now(), datetime.datetime.now().month,
       datetime.datetime.now().day, datetime.datetime.now().hour, datetime.datetime.now().minute, datetime.datetime.now().second)
