@@ -1,7 +1,7 @@
 import time
 import picamera
-import schedule
-import datetime
+from schedule import *
+from datetime import date
 
 def job():
     with picamera.PiCamera() as camera:
@@ -16,5 +16,9 @@ def job():
             camera.stop_preview()
 
 
-print(datetime.datetime.now(), datetime.datetime.now().month,
-      datetime.datetime.now().day, datetime.datetime.now().hour, datetime.datetime.now().minute, datetime.datetime.now().second)
+sched = Scheduler()
+sched.start()
+
+exec_date = date(2021, 4, 9, 13, 34, 30)
+
+job = sched.add_date_job(my_job, exec_date, ['text'])
