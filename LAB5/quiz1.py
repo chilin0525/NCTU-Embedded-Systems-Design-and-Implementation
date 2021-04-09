@@ -17,8 +17,7 @@ def job():
 
 
 sched = Scheduler()
-sched.start()
 
-exec_date = date(2021, 4, 9, 13, 34, 30)
+exec_date = date(2021, 4, 9, 13, 35, 30)
 
 job = sched.add_date_job(my_job, exec_date, ['text'])
