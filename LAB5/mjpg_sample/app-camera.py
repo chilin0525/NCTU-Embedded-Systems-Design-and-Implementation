@@ -22,7 +22,9 @@ def index():
 
 def gen(camera):
     while True:
-        frame = camera.get_frame()
+        # frame = camera.get_frame()
+        frame = camera.read()
+        frame = imutils.resize(frame, width=400)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 

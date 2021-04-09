@@ -13,6 +13,7 @@
 
 import cv2
 from imutils.video.pivideostream import PiVideoStream
+
 class Camera(object):
     def __init__(self):
         if cv2.__version__.startswith('2'):
@@ -27,8 +28,8 @@ class Camera(object):
         #self.video = cv2.VideoCapture(1)
         #self.video.set(PROP_FRAME_WIDTH, 640)
         #self.video.set(PROP_FRAME_HEIGHT, 480)
-        self.video.set(PROP_FRAME_WIDTH, 320)
-        self.video.set(PROP_FRAME_HEIGHT, 240)
+        # self.video.set(PROP_FRAME_WIDTH, 320)
+        # self.video.set(PROP_FRAME_HEIGHT, 240)
     
     def __del__(self):
         self.video.release()
