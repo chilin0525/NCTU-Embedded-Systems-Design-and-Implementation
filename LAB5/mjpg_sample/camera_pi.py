@@ -25,6 +25,7 @@ class Camera(object):
         #     PROP_FRAME_HEIGHT = cv2.CAP_PROP_FRAME_HEIGHT
 
         # self.video = cv2.VideoCapture(0)
+        self.video = PiVideoStream().stop()
         self.video = PiVideoStream().start()
         #self.video = cv2.VideoCapture(1)
         #self.video.set(PROP_FRAME_WIDTH, 640)
