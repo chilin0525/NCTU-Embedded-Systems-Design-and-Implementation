@@ -35,6 +35,7 @@ class Camera(object):
         self.video.release()
     
     def get_frame(self):
-        success, image = self.video.read()
+        # success, image = self.video.read()
+        image = vs.read()
         ret, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tostring()
