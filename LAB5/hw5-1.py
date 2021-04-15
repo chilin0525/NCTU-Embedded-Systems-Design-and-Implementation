@@ -15,7 +15,7 @@ def job():
             camera.stop_preview()
 
 
-schedule.every().day.at("00:27").do(job)
+schedule.every().day.at("00:34").do(job)
 while True:
     schedule.run_pending()
     time.sleep(1)
