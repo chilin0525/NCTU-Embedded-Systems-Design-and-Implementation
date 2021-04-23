@@ -3,6 +3,8 @@ import numpy as np
 import imutils
 import dlib
 import cv2
+from imutils.video.pivideostream import PiVideoStream
+from imutils.video import FPS
 
 # initialize dlib's face detector (HOG-based)
 # then create the facial landmark predictor
