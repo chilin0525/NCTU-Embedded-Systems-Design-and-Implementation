@@ -1,39 +1,56 @@
-#!/usr/bin/python
-#+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-#|R|a|s|p|b|e|r|r|y|P|i|.|c|o|m|.|t|w|
-#+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-# Copyright (c) 2014, raspberrypi.com.tw
-# All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-#
-# Author : sosorry
-# Date   : 05/31/2015
-# Origin : http://blog.miguelgrinberg.com/post/video-streaming-with-flask
+from imutils import face_utils
+import numpy as np
+import imutils
+import dlib
+import cv2
 
-from flask import Flask, render_template, Response
-from quiz2 import Camera
+# initialize dlib's face detector (HOG-based)
+# then create the facial landmark predictor
+detector = dlib.get_frontal_face_detector()
 
-app = Flask(__name__)
+predictor_file = "model/shape_predictor_68_face_landmarks.dat"
+predictor = dlib.shape_predictor(predictor_file)
 
+vs = PiVideoStream().start()
+time.sleep(2.0)
+fps = FPS().start()
 
-@app.route('/')
-def index():
-    return render_template('stream.html')
+while True:
+    # load the input image, resize it, and convert it to grayscale
+    frame = vs.imread()
+    image = imutils.resize(frame, width=500)
 
+    # cvtColor: Converts an image from one color space to another.
+    # Here, convert a RGB image to gray
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def gen(camera):
-    while True:
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+    # detect faces in the grayscale image
+    # The 1 in the second argument indicates that we should upsample the image 1 time.
+    # This will make everything bigger and allow us to detect more faces.
+    rects = detector(gray, 1)
 
+    # loop over the face detections
+    for (i, rect) in enumerate(rects):
+        # determine the facial landmarks for the face region, then
+        # convert the facial landmark (x, y)-coordinates to a NumPy
+        # array
+        shape = predictor(gray, rect)
+        shape = face_utils.shape_to_np(shape)
 
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+        # convert dlib's rectangle to a OpenCV-style bounding box
+        # [i.e., (x, y, w, h)], then draw the face bounding box
+        (x, y, w, h) = face_utils.rect_to_bb(rect)
+        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
+        # show the face number
+        cv2.putText(image, "Face #{}".format(i + 1), (x - 10, y - 10),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8000)
+        # loop over the (x, y)-coordinates for the facial landmarks
+        # and draw them on the image
+        for (x, y) in shape:
+            cv2.circle(image, (x, y), 1, (0, 0, 255), -1)
+
+    # show the output image with the face detections + facial landmarks
+    cv2.imshow("Output", image)
+    cv2.waitKey(0)
