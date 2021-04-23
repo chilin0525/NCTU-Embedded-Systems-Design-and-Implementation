@@ -3,6 +3,7 @@ import numpy as np
 import imutils
 import dlib
 import cv2
+import time
 from imutils.video.pivideostream import PiVideoStream
 from imutils.video import FPS
 
