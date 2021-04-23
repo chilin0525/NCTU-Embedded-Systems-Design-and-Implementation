@@ -16,7 +16,6 @@ predictor = dlib.shape_predictor(predictor_file)
 
 vs = PiVideoStream().start()
 time.sleep(2.0)
-fps = FPS().start()
 
 while True:
     # load the input image, resize it, and convert it to grayscale
@@ -55,5 +54,6 @@ while True:
             cv2.circle(image, (x, y), 1, (0, 0, 255), -1)
 
     # show the output image with the face detections + facial landmarks
-    cv2.imshow("Output", image)
-    cv2.waitKey(0)
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord("q"):
+        break
