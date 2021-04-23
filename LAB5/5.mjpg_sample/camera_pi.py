@@ -12,27 +12,36 @@
 # Origin : http://blog.miguelgrinberg.com/post/video-streaming-with-flask
 
 import cv2
+import imutils
+import time
+from imutils.video.pivideostream import PiVideoStream
+from imutils.video import FPS
 
 class Camera(object):
     def __init__(self):
-        if cv2.__version__.startswith('2'):
+        """if cv2.__version__.startswith('2'):
             PROP_FRAME_WIDTH = cv2.cv.CV_CAP_PROP_FRAME_WIDTH
             PROP_FRAME_HEIGHT = cv2.cv.CV_CAP_PROP_FRAME_HEIGHT
-        elif cv2.__version__.startswith('3'):
+        else:
             PROP_FRAME_WIDTH = cv2.CAP_PROP_FRAME_WIDTH
-            PROP_FRAME_HEIGHT = cv2.CAP_PROP_FRAME_HEIGHT
+            PROP_FRAME_HEIGHT = cv2.CAP_PROP_FRAME_HEIGHT"""
+        
+        
 
-        self.video = cv2.VideoCapture(0)
+        self.video =PiVideoStream().start()
+        #time.sleep(2.0)
         #self.video = cv2.VideoCapture(1)
         #self.video.set(PROP_FRAME_WIDTH, 640)
         #self.video.set(PROP_FRAME_HEIGHT, 480)
-        self.video.set(PROP_FRAME_WIDTH, 320)
-        self.video.set(PROP_FRAME_HEIGHT, 240)
+        #self.video.set(PROP_FRAME_WIDTH, 320)
+        #self.video.set(PROP_FRAME_HEIGHT, 240)
     
-    def __del__(self):
-        self.video.release()
+    #def __del__(self):
+     #   self.video.release()
     
     def get_frame(self):
-        success, image = self.video.read()
+        image = self.video.read()
+        #mage = imutils.resize(image, width=400)
         ret, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tostring()
+

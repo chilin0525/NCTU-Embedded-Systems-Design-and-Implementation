@@ -26,3 +26,10 @@
 
 * 此次 LAB 後半段需要串流網頁, 助教提供的程式碼是使用 flask, 所以複製時不要亂動資料夾全部一起複製
 
+## lib
+
+* opencv:
+
+    ```
+    pip3 install opencv-python
+    ```
