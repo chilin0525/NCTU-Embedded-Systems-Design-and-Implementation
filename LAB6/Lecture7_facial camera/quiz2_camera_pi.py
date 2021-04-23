@@ -20,7 +20,7 @@ fps = FPS().start()
 
 while True:
     # load the input image, resize it, and convert it to grayscale
-    frame = vs.imread()
+    frame = vs.read()
     image = imutils.resize(frame, width=500)
 
     # cvtColor: Converts an image from one color space to another.
