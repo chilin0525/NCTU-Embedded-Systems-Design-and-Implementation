@@ -38,7 +38,7 @@ class Camera(object):
      #   self.video.release()
 
     def get_frame(self):
-        image = self.video.read()
+        ret, image = self.video.read()
 
         #mage = imutils.resize(image, width=400)
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
