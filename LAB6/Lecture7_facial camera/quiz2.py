@@ -61,7 +61,7 @@ while True:
 
         face_counter = face_counter + 1
 
-    cv.imshow("Frame", image)
+    cv2.imshow("Frame", image)
     # show the output image with the face detections + facial landmarks
     key = cv2.waitKey(1) & 0xFF
     if key == ord("q"):
