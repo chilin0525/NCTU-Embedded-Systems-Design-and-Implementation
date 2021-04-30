@@ -1,0 +1,31 @@
+#1.
+
+1. 使用序列埠連線, 先下載作業系統等軟體後進行檔案修改(為了支援序列埠連線)後, 使用USB 轉 TTL 序列傳輸線連接 Raspberry Pi 與 電腦, 在使用工具(例如: Putty等工具使用序列埠連線) 
+2. 使用 ssh 連線: 但需要先做好 Raspberry Pi 等設定, 例如 enable ssh service 等等
+3. 使用 VNC 遠端桌面
+
+#2.
+
+4-band: 紅 紅 紅(*100) 金, 第一二環分別代表十位與個位數字, 第三環為 multipier, 第四環為容差
+5-band: 紅 紅 黑 棕(*10) 金, 第一二三環分別代表百位與十位與個位數字, 第四環為 multipier, 第五環為容差
+
+#3.
+
+1) TRIG 腳位收到高電位 (3.3V) 後發送超聲波, ECHO 腳位維持低電位 (0V), 收到回應後拉到高電位 (5V), Raspberry Pi 腳位的容忍電位為 3.3V
+公式抄講義
+
+2) 將導致 Raspberry Pi pin 腳位壞掉
+
+#4
+
+a)
+1. 第六行應改為: GPIO.setup(LED_PIN, GPIO.OUT)
+2. 第十五行改為: print("Exception: KeyboardInterrupt")
+
+b)
+1. 為 syntax error
+2. 且可能導致額外問題, 例如 GPIO 需要重開機重製後才能正常運作
+    * ex: RuntimeWarning: This channel is already in use, continuing anyway. Use GPIO.setwarnings(False) to disable warnings.
+
+
+#5
