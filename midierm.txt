@@ -47,6 +47,8 @@ sensitivity = 64, (10/64,-13/64,9/64) = 0.15625, -0.203125, 0.140625
 
 #9:
 
+get from Declination angle: self.angle_offset = ( -1 * (4 + (32/60))) / (180 / pi)
+
 # 10 
 
 a. 4 samples
