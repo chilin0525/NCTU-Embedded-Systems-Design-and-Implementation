@@ -32,10 +32,11 @@ b)
 
 #6: 
 
-#10 
+* # 10 
 
-10 bit resolution
-+/- 8g
+a. 4 samples
+b. 75 Hz
+c. +- 4.0 Ga
 
 # 11
 
