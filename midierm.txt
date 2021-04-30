@@ -28,14 +28,20 @@ b)
     * ex: RuntimeWarning: This channel is already in use, continuing anyway. Use GPIO.setwarnings(False) to disable warnings.
 
 
-#5: ???
+* #5: 
 
-#6: 
+平常情況仍為重力加速度因此 Z 非0正常
+
+* #6:
+
+sensitivity = 64, (10/64,-13/64,9/64) = 0.15625, -0.203125, 0.140625
+
+#7: 
 
 1. MAX: 800 Hz
 2. i2c_bus~(i2c_address,0x23,0x20)
 
-#7:
+#8:
 
 * #8: 16*0.0175 = 0.28
 
