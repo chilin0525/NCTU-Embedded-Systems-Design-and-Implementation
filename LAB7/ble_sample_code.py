@@ -39,7 +39,7 @@ def ble_scan(sock):
             print("uuid:", beacon.uuid)
             print("major:", beacon.major, ", minor:", beacon.minor, ", txpower:", beacon.unknown)
             print("rssi", beacon.rssi)
-            ratio = beacon.rssi*1.0/beacon.unknown
+            ratio = float(beacon.rssi)*1.0/float(beacon.unknown)
             print("distance: ", (Coefficient1) * pow(ratio, Coefficient2) + Coefficient3)
             print("--------")
     return rssiDict
