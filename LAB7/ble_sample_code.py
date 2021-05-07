@@ -40,7 +40,9 @@ def ble_scan(sock):
             print("major:", beacon.major, ", minor:", beacon.minor, ", txpower:", beacon.unknown)
             print("rssi", beacon.rssi)
             ratio = float(beacon.rssi)*1.0/float(beacon.unknown)
-            if(ratio<1.0):
+            if(beacon.rssi==0):
+                print(-1.0)
+            elif(ratio<1.0):
                 print("distance: ", pow(ratio, coefficient2))
             else:
                 print("distance: ", (coefficient1) * pow(ratio, coefficient2) + coefficient3)
