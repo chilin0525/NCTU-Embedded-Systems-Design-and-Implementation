@@ -2,6 +2,8 @@ import smbus
 import time
 from math import *
 import speech_recognition as sr
+from gtts import gTTS
+import os
 
 bus = smbus.SMBus(1)            # 0 for R-Pi Rev. 1, 1 for Rev. 2
 
@@ -177,11 +179,20 @@ def get_sensor():
     ans += "   Press: " + str((press)) + " (hPa)"
     ans += "   Altitude: " + str(altitude) + " m s.l.m"
     
+    print("Barometer:")
+    print("   Temp: %f C (%f F)" % (tempC, tempF))
+    print("   Press: %f (hPa)" % (press))
+    print("   Altitude: %f m s.l.m" % (altitude))
+
+def output_sound(sound_str):
+
+    tts = gTTS(text=sound_str, lang='en')
+    tts.save('hello.mp3')
+
+    os.system('omxplayer -o local -p hello.mp3 > /dev/null 2>&1')
+
     return ans
-    # print ("Barometer:" )
-    # print ("   Temp: %f C (%f F)" %(tempC,tempF))
-    # print ("   Press: %f (hPa)" %(press))
-    # print ("   Altitude: %f m s.l.m" %(altitude))
+    
 
 
 #obtain audio from the microphone
@@ -199,7 +210,7 @@ try:
     print("Google Speech Recognition thinks you said:")
     print(r.recognize_google(audio))
     if(r.recognize_google(audio)=="test"):
-        get_sensor()
+        output_sound(get_sensor())
 except sr.UnknownValueError:
     print("Google Speech Recognition could not understand audio")
 except sr.RequestError as e:
