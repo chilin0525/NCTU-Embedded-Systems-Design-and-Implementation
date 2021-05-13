@@ -199,7 +199,7 @@ try:
     print("Google Speech Recognition thinks you said:")
     print(r.recognize_google(audio))
     if(r.recognize_google(audio)=="test"):
-        print("yes")
+        get_sensor()
 except sr.UnknownValueError:
     print("Google Speech Recognition could not understand audio")
 except sr.RequestError as e:
