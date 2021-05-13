@@ -1,6 +1,7 @@
 import smbus
 import time
 from math import *
+import speech_recognition as sr
 
 bus = smbus.SMBus(1)            # 0 for R-Pi Rev. 1, 1 for Rev. 2
 
@@ -158,10 +159,9 @@ class BMP180(IMU):
             (1 - ((self.getPress() / STANDARD_PRESSURE) ** 0.1903))
         return self.altitude
 
-try:
+def get_sensor():
     # if run directly we'll just create an instance of the class and output
     # the current readings
-
     sensors3 = gy801_3()
 
     barometer = sensors3.baro
@@ -171,11 +171,36 @@ try:
     press = barometer.getPress()
     altitude = barometer.getAltitude()
 
-    print ("Barometer:" )
-    print ("   Temp: %f C (%f F)" %(tempC,tempF))
-    print ("   Press: %f (hPa)" %(press))
-    print ("   Altitude: %f m s.l.m" %(altitude))
+    ans = ""
+    ans += "Barometer:"
+    ans += "   Temp: " + str(tempC) + " C (" + str(tempF) + " F)"
+    ans += "   Press: " + str((press)) + " (hPa)"
+    ans += "   Altitude: " + str(altitude) + " m s.l.m"
+    
+    return ans
+    # print ("Barometer:" )
+    # print ("   Temp: %f C (%f F)" %(tempC,tempF))
+    # print ("   Press: %f (hPa)" %(press))
+    # print ("   Altitude: %f m s.l.m" %(altitude))
 
 
-except KeyboardInterrupt:
-    print("Cleanup")
+#obtain audio from the microphone
+r = sr.Recognizer()
+
+with sr.Microphone() as source:
+    print("Please wait. Calibrating microphone...")
+    #listen for 1 seconds and create the ambient noise energy level
+    r.adjust_for_ambient_noise(source, duration=1)
+    print("Say something!")
+    audio = r.listen(source)
+
+# recognize speech using Google Speech Recognition
+try:
+    print("Google Speech Recognition thinks you said:")
+    print(r.recognize_google(audio))
+    if(r.recognize_google(audio)=="test"):
+        print("yes")
+except sr.UnknownValueError:
+    print("Google Speech Recognition could not understand audio")
+except sr.RequestError as e:
+    print("No response from Google Speech Recognition service: {0}".format(e))
