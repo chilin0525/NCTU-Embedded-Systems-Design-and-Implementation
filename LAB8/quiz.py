@@ -184,6 +184,9 @@ def get_sensor():
     print("   Press: %f (hPa)" % (press))
     print("   Altitude: %f m s.l.m" % (altitude))
 
+    return ans
+
+
 def output_sound(sound_str):
 
     tts = gTTS(text=sound_str, lang='en')
@@ -191,7 +194,6 @@ def output_sound(sound_str):
 
     os.system('omxplayer -o local -p hello.mp3 > /dev/null 2>&1')
 
-    return ans
     
 
 
