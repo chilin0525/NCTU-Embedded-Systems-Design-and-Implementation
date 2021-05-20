@@ -4,7 +4,7 @@ import numpy as np
 import librosa.display
 import sklearn
 
-y, sr = librosa.load('sentence.mp3')
+y, sr = librosa.load('t2.mp3')
 mfccs = librosa.feature.mfcc(y=y, sr=sr)
 print (mfccs)
 
